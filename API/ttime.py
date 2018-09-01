@@ -12,8 +12,8 @@ class ConvertTime(object):
 
     Convert time from int into a string using the specified format.
 
-    t: int(time.time())
-    f: str(), default = '%a, %d %b %Y %H:%M:%S'
+    :t int(time.time())
+    :f str(), default = '%a, %d %b %Y %H:%M:%S'
     """
     @staticmethod
     def convert(t, f=None):
