@@ -1,15 +1,20 @@
 # -*- coding: utf8 -*-
 
 
-class WindBearing(object):
-    """
-    Converts degrees-wind direction (from degrees to direction).
+__all__ = ['WindBearing']
 
-    :g int(degrees)
-    :return str(direction)
-    """
+
+class WindBearing(object):
+
     @staticmethod
     def convert(g):
+        """
+        Converts degrees-wind direction (from degrees to direction).
+
+        :param g: degrees, must type: int
+        :return direction, type: str
+        """
+
         if not isinstance(g, int):
             raise TypeError(type(g))
         elif 337 <= g <= 360:
