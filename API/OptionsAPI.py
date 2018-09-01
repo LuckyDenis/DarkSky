@@ -5,4 +5,4 @@ __all__ = ['Options']
 
 class Options(object):
     key = None
-    timeout = (5.0, 10)
+    timeout = (5.0, 5.0)

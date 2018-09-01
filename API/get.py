@@ -33,3 +33,5 @@ class Request(object):
         with requests.get(s, timeout=Options.timeout, params=kwargs) as r:
             if r.ok:
                 return r.json()
+            else:
+                raise TypeError()
