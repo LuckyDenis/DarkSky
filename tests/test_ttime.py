@@ -10,12 +10,7 @@ def test_input():
     assert t == time.strftime('%a, %d %b %Y %H:%M:%S', time.gmtime(int(time.time())))
 
 
-@pytest.mark.parametrize('f', [
-    '%A, %S',
-    '%H:%M',
-    '%B',
-    '%a, %b, %c'
-])
+@pytest.mark.parametrize('f', ['%A, %S', '%H:%M', '%B', '%a, %b, %c'])
 def test_format(f):
     t = ConvertTime.convert(int(time.time()), f)
     assert t == time.strftime(f, time.gmtime((int(time.time()))))
