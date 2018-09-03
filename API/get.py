@@ -10,7 +10,7 @@ __all__ = ['Request']
 
 class Request(object):
     @classmethod
-    def answer(cls, lat, lon, **kwargs):
+    def answer(cls, lat, lon, time=None, **kwargs):
         """
         A request to the API site.
 
@@ -19,6 +19,7 @@ class Request(object):
 
         :param lat: latitude, must type float
         :param lon: longitude, must type: float
+        :param time: 
         :param kwargs: options, must type: dict
         :return: request answer, type: json
         """
@@ -30,6 +31,8 @@ class Request(object):
         if not isinstance(lon, float):
             raise TypeError()
         s = 'https://api.darksky.net/forecast/{!s}/{!s},{!s}'.format(Options.key, lat, lon)
+        if isinstance(time, int):
+            s += ',{!s}'.format(time)
         with requests.get(s, timeout=Options.timeout, params=kwargs) as r:
             if r.ok:
                 return r.json()
