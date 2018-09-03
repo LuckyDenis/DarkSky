@@ -1,15 +1,15 @@
 # -*- coding: utf8 -*-
 
-from time import strftime
-from time import gmtime
+from datetime import datetime
+import pytz
 
-__all__ = ['ConvertTime']
+__all__ = ['Time']
 
 
-class ConvertTime(object):
+class Time(object):
 
     @staticmethod
-    def convert(t, f=None):
+    def convert(t, f=None, tz=None):
         """
         Convert time.
 
@@ -26,4 +26,18 @@ class ConvertTime(object):
         format_ = f or '%a, %d %b %Y %H:%M:%S'
         if not isinstance(format_, str):
             raise TypeError()
-        return strftime(format_, gmtime(t))
+        d = datetime.fromtimestamp(t)
+        if isinstance(tz, str):
+            d = d.astimezone(pytz.timezone(tz))
+        return d.strftime(format_)
+
+    @staticmethod
+    def get_timezone(request_json):
+        """
+        Takes the timezone from the request.
+
+        :param request_json: request (DarkSky.net), format: dict
+        :return: example: 'Europe/Moscow', format: str
+        """
+        if 'timezone' in request_json:
+            return request_json['timezone']

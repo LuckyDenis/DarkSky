@@ -1,13 +1,13 @@
 # -*- coding: utf8 -*-
 
 
-__all__ = ['WindBearing']
+__all__ = ['Wind']
 
 
-class WindBearing(object):
+class Wind(object):
 
     @staticmethod
-    def convert(g):
+    def direction(g):
         """
         Converts degrees-wind direction (from degrees to direction).
 
